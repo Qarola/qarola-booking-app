@@ -1,5 +1,4 @@
 import React from "react";
-import HeaderTittle from "./HeaderTittle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBed,
