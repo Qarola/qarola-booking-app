@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,12 +22,16 @@ const HeaderTittle = () => {
       key: "selection",
     },
   ]);
+  const [destination, setDestination] = useState("");
   const [openOptions, setOpenOptions] = useState(false);
+
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     room: 1,
   });
+
+  const navigate = useNavigate();
 
   const handleOption = (name, operation) => {
     setOptions((prev) => {
@@ -36,6 +41,11 @@ const HeaderTittle = () => {
       };
     });
   };
+
+  const handleSearch = () => {
+    navigate("/hotels", {state: { destination, date, options }})
+
+  }
 
   return (
     <div className="headerCtn">
@@ -52,6 +62,7 @@ const HeaderTittle = () => {
             type="text"
             placeholder="Where are you going"
             className="headerSearchInput"
+            onChange={(e) => setDestination(e.target.value)}
           />
         </div>
         <div className="headerSearchItem">
@@ -69,6 +80,7 @@ const HeaderTittle = () => {
               onChange={(item) => setDate([item.selection])}
               ranges={date}
               className="date"
+              minDate={new Date()}
             />
           )}
         </div>
@@ -147,7 +159,7 @@ const HeaderTittle = () => {
           )}
         </div>
         <div className="headerSearchItem">
-          <button className="headerBtnSearch">Search</button>
+          <button className="headerBtnSearch" onClick={handleSearch}>Search</button>
         </div>
       </div>
     </div>
