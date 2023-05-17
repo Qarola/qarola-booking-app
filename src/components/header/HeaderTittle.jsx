@@ -90,7 +90,7 @@ const HeaderTittle = () => {
             onClick={() => setOpenOptions(!openOptions)}
             className="headerSearchText"
           >
-            {`${options.adult} adult  ${options.children} children ${options.room} room `}{" "}
+            {`${options.adult} adult ▪ ${options.children} children ▪ ${options.room} room `}{" "}
           </span>
           {openOptions && (
             <div className="options">

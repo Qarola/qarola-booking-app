@@ -18,7 +18,7 @@
     border-radius: 10px;
     position: sticky;
     top: 10px;
-    height: max-content;
+    height: max-content; /*este ajustará su altura automáticamente para que se ajuste a todo su contenido, sin importar cuánto contenido haya dentro.*/
   }
   
   .lsTitle{
@@ -43,6 +43,11 @@
     border: none;
     padding: 5px;
   }
+
+ /*  .dateItem {
+    font-size: small;
+  } */
+
   .lsItem>span{
     height: 30px;
     padding: 5px;
