@@ -8,6 +8,7 @@
 
 .headerContainer {
   width: 100%;
+  max-width: 1024px;
   margin: 20px 0px 100px 0px;
 }
 
@@ -18,37 +19,33 @@
 .headerList {
   display: flex;
   gap: 40px;
-  margin: 0px auto 50px 12.5%;
+  margin-bottom: 50px;
 }
 
 .headerListItem {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.headerListItem.active {
+.headerListItem:hover {
+  
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #1A4A8D;
+}
+
+.activeButton {
   border: 1px solid white;
   padding: 10px;
   border-radius: 20px;
 }
 
 .headerDesc {
-  margin: 0px auto 20px 12.5%;
-}
-
-.headerCtn {
-  display: inline-flexbox;
-  background-color: #003580;
-  position: relative;
-  margin-top: -30px;
-  color: white;
-}
-
-.headerTittle {
-  margin: 0px auto 20px 12.5%;
-  /*  margin-right: auto; /* Empuja el título hacia la izquierda */
-  /*margin-bottom: 10px; /* Crea un espacio entre el título y los otros elementos */
+  margin: 20px 0px;
 }
 
 .headerBtn {
@@ -58,8 +55,6 @@
   border: none;
   padding: 10px;
   cursor: pointer;
-  margin: 0px auto 100px 12.5%;
-
 }
 
 .headerSearch {
@@ -75,17 +70,6 @@
   bottom: -25px;
   width: 100%;
   max-width: 1024px;
-  margin: 0px auto 0px 12%;
-
-}
-
-.headerBtnSearch {
-  background-color: #0071c2;
-  color: white;
-  font-weight: 500;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
 }
 
 .headerIcon {
@@ -101,6 +85,12 @@
 .headerSearchInput {
   border: none;
   outline: none;
+}
+
+.msgOk {
+  border-color: #0071c2;
+  border-radius: 20%;
+  margin-top: 1rem;
 }
 
 .headerSearchText {
@@ -123,20 +113,13 @@
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
-
 }
-
-/* .optionText {
-  margin: 0 auto 0 0;
-} */
 
 .optionItem {
   width: 200px;
   display: flex;
   justify-content: space-between;
-  margin: 1rem 1rem 1rem 1rem;
-  /*me permite darle margen al cuadro blanco que contiene a los items*/
-
+  margin: 10px;
 }
 
 .optionCounter {
@@ -146,13 +129,6 @@
   font-size: 12px;
   color: black;
 }
-
-/*optionCounter es el que alinea las columnas del contador*/
-
-/* .optionCounterNumber {
-  padding: 0 1rem 0 1rem;
-
-} */
 
 .optionCounterButton {
   width: 30px;
@@ -166,4 +142,3 @@
 .optionCounterButton:disabled {
   cursor: not-allowed;
 }
-

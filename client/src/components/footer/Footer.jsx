@@ -1,4 +1,3 @@
-import React from "react";
 import "./footer.css";
 
 const Footer = () => {
@@ -45,7 +44,7 @@ const Footer = () => {
           <li className="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="fText">Copyright © 2023 Qarolabooking.</div>
+      <div className="fText">Copyright © 2023 Qarola-Booking.</div>
     </div>
   );
 };
