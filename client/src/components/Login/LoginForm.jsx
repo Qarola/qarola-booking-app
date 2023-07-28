@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
+import { signInWithGoogle } from "./signInWithGoogle";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./signInWithGoogle";
+
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { /* faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import FacebookLogin from "@greatsumini/react-facebook-login";
 //import GoogleLogin from 'react-google-login';
+
 import NavbarLogin from "./NavbarLogin";
 import "./loginForm.css";
 
 const LoginForm = () => {
- 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleEmailLogin = (event) => {
+    event.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // El usuario ha sido creado exitosamente
+        const user = userCredential.user;
+        console.log("Usuario registrado:", user);
+      })
+      .catch((error) => {
+        // Manejar errores si ocurren durante el registro
+        console.error("Error de registro:", error);
+      });
+  };
   return (
     <>
       <NavbarLogin />
@@ -19,8 +48,22 @@ const LoginForm = () => {
             type="email"
             className="form-input"
             placeholder="Enter your email address"
+            value={email}
+            onChange={handleEmailChange}
           />
-          <button type="submit" className="form-button">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-input"
+            placeholder="Enter your password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <button
+            type="submit"
+            className="form-button"
+            onClick={handleEmailLogin}
+          >
             Continue with email
           </button>
         </form>
@@ -34,7 +77,6 @@ const LoginForm = () => {
 
         <div className="social-login-container">
           <div className="icon-container-fb">
-          
             <FacebookLogin
               appId={process.env.REACT_APP_FACEBOOK_APP_ID}
               onSuccess={(response) => {
@@ -48,6 +90,10 @@ const LoginForm = () => {
               }}
             />
           </div>
+          <button className="btnGoogle" onClick={signInWithGoogle}>
+            Sign in with Google
+          </button>
+
           {/*    <div className="icon-container-g">
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
