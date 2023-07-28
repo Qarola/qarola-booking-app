@@ -158,3 +158,6 @@ p:last-child {
     font-weight: 700;
   }
   
+  .btnGoogle {
+    margin-left: 6rem;
+  }
