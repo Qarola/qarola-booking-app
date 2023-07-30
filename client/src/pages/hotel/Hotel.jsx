@@ -17,6 +17,9 @@ import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -24,7 +27,6 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 // eslint-disable-next-line
 const { data, loading, error } = useFetch(`${backendUrl}/hotels/find/${id}`);

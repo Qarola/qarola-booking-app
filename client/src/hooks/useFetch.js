@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const useFetch = (url) => {
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ const useFetch = (url) => {
       setLoading(false);
     };
     fetchData();
-  }, [backendUrl, url]);
+  }, [ url]);
 
   const reFetch = async () => {
     setLoading(true);

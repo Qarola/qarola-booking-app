@@ -8,8 +8,10 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Reserve = ({ setOpen, hotelId }) => {
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+ 
 
   const [selectedRooms, setSelectedRooms] = useState([]);
   // eslint-disable-next-line
