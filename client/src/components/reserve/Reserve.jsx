@@ -9,9 +9,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, hotelId }) => {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
   const [selectedRooms, setSelectedRooms] = useState([]);
   // eslint-disable-next-line
-  const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
+  const { data, loading, error } = useFetch(`${backendUrl}/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
 
   const getDatesInRange = (startDate, endDate) => {

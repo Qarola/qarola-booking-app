@@ -23,14 +23,20 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 // eslint-disable-next-line
-  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
-  const { user } = useContext(AuthContext);
+const { data, loading, error } = useFetch(`${backendUrl}/hotels/find/${id}`);
+const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+
+
+
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);

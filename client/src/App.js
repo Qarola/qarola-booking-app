@@ -1,5 +1,3 @@
-//import dotenv from 'dotenv';
-
 import {
   BrowserRouter,
   Routes,
@@ -12,10 +10,6 @@ import List from "./pages/list/List";
 import Login from "./pages/login/Login";
 import LoginForm from "./components/Login/LoginForm";
 
-//import 'react-app-polyfill/ie11'; // Para soporte en Internet Explorer 11
-//import 'react-app-polyfill/stable'; // Para soporte en otros navegadores antiguos
-
-//dotenv.config();
 
 
 function App() {
