@@ -68,7 +68,7 @@ const { user } = useContext(AuthContext);
     if (user) {
       setOpenModal(true);
     } else {
-      navigate("/login");
+      navigate("/register");
     }
   };
   return (
