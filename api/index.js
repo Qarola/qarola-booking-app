@@ -16,19 +16,10 @@ dotenv.config();
 const connect = async () => {
     try {
        await mongoose.connect(process.env.MONGO);
-        console.log("Connected to mongoDB",  /*{
-            keepAlive: true,
-            useUnifiedTopology: true,
-            useNewUrlParser: true 
-        }*/);
+        console.log("Connected to mongoDB");
 
         } catch (error) {
             throw error
-           /*  if (error) {
-                console.log("DB: ERROR !!!")
-            } else {
-                console.log("Correct connection.")
-            } */
         }
 
 };
@@ -37,8 +28,29 @@ mongoose.connection.on("disconnected", () => {
     console.log("mongoDB disconnected");
 });
 
+// Manejo de desconexión al detener o reiniciar el servidor
+process.on("SIGINT", async () => {
+    try {
+      await mongoose.connection.close();
+      console.log("Disconnected from mongoDB");
+      process.exit(0);
+    } catch (error) {
+      console.error("Error disconnecting from mongoDB", error);
+      process.exit(1);
+    }
+  });
+
 //middlewares
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  methods: 'GET,POST,PUT,DELETE',
+};
+
+// Usar el middleware cors
+app.use(cors(corsOptions));
+/* app.use(cors({
+  origin: "https://qarola-booking-app.netlify.app"
+})); */
 app.use(cookieParser());
 app.use(express.json());
 
