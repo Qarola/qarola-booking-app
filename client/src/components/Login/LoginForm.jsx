@@ -1,17 +1,17 @@
 import React, { useState } from "react";
+//import FacebookLoginComponent from "./FacebookLoginForm";
 import { signInWithGoogle } from "./signInWithGoogle";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./signInWithGoogle";
-
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { /* faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import FacebookLogin from "@greatsumini/react-facebook-login";
-//import GoogleLogin from 'react-google-login';
-
 import NavbarLogin from "./NavbarLogin";
 import "./loginForm.css";
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { /* faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
+//import GoogleLogin from 'react-google-login';
+
 
 const LoginForm = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -77,36 +77,11 @@ const LoginForm = () => {
 
         <div className="social-login-container">
           <div className="icon-container-fb">
-            <FacebookLogin
-              appId={process.env.REACT_APP_FACEBOOK_APP_ID}
-              onSuccess={(response) => {
-                console.log("Login Success!", response);
-              }}
-              onFail={(error) => {
-                console.log("Login Failed!", error);
-              }}
-              onProfileSuccess={(response) => {
-                console.log("Get Profile Success!", response);
-              }}
-            />
+          {/*   <FacebookLoginComponent className='fb-login'/> */}
           </div>
           <button className="btnGoogle" onClick={signInWithGoogle}>
             Sign in with Google
           </button>
-
-          {/*    <div className="icon-container-g">
-            <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-              textButton={
-                <>
-                  <FontAwesomeIcon className="gIcon" icon={faGoogle} />
-                </>
-              }
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
-          </div> */}
         </div>
         <br />
         <p>

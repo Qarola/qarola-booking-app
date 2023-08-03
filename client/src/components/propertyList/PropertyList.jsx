@@ -1,6 +1,9 @@
 import useFetch from "../../hooks/useFetch";
 import "./propertyList.css";
 
+//const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+
 const PropertyList = () => {
   // eslint-disable-next-line
   const { data, loading, error } = useFetch("/hotels/countByType");
