@@ -4,6 +4,7 @@ const {
   deleteUser,
   getUser,
   getUsers,
+  getAuthenticatedUser
 } = require("../controllers/user.js");
 const { verifyAdmin, verifyToken, verifyUser } = require("../utils/verifyToken.js");
 
@@ -17,6 +18,9 @@ router.delete("/:id", verifyUser, deleteUser);
 
 //GET
 router.get("/:id", verifyUser, getUser);
+
+router.get("/auth/user", verifyToken, getAuthenticatedUser);
+
 
 //GET ALL
 router.get("/", verifyAdmin, getUsers);
