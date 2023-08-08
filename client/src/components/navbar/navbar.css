@@ -25,3 +25,72 @@
   cursor: pointer;
   color: #003580;
 }
+
+
+.userProfile {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.userProfile {
+  position: relative; /* Asegura que el menú desplegable esté posicionado correctamente */
+  display: flex;
+  align-items: center;
+}
+
+/* navbar.css */
+
+/* ... (otros estilos) */
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* Posiciona el menú desplegable debajo del nombre de usuario */
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+}
+
+.logout-button {
+  margin-top: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+
+.dropdown a {
+  color: #333; /* Cambia el color del enlace según tus preferencias */
+  text-decoration: none;
+  padding: 4px 8px;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #f2f2f2; /* Cambia el color de fondo al pasar el mouse */
+}

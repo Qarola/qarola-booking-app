@@ -158,6 +158,91 @@ p:last-child {
     font-weight: 700;
   }
   
+ 
+
   .btnGoogle {
-    margin-left: 7rem;
+    background-color: #ffffff;
+    color: #757575;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 15px 15px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    margin: 20px 0 5px  95px;
+  }
+  
+  .btnGoogle:hover {
+    border-color: #006CE4;
+  }
+
+  .btnFacebook {
+    background-color: #ffffff;
+    color: #4267B2;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 15px 15px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    margin: 5px 0 5px 25px;
+
+  }
+  
+  .btnFacebook:hover {
+    border-color: #006CE4;
+  }
+  
+  .d-line-2 {
+    margin-top: 1rem;
+  
+  }
+  
+  .divider-line-2 {
+    display:inline-block;
+    width: 100%;/* Ajusta el ancho de la línea según tus preferencias */
+    border-bottom: 1px solid #E7E7E7; /* Puedes cambiar el color de la línea aquí */
+    margin: 10px 10px  ; /* Ajusta el margen para separar la línea del texto */
+  }
+
+
+  /* login */
+  .login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .lContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .lInput{
+    height: 30px;
+    padding: 10px;
+  }
+  
+  .lButton {
+    border: none;
+    padding: 10px 20px;
+    background-color: #0071c2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .lButton:disabled{
+    background-color: #0071c28c;
+    cursor: not-allowed;
+  }
+
+  .userProfile {
+    color: #ffffff;
+    font-size: small;
+    text-align: end;
+    margin-top: 1rem;
   }

@@ -1,11 +1,11 @@
 import useFetch from "../../hooks/useFetch";
 import "./featured.css";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Featured = () => {
   // eslint-disable-next-line
-  const { data, loading, error } = useFetch(
-    "/hotels/countByCity?cities=london,gramado,porto"
-  );
+  const { data, loading, error } = useFetch(`${backendUrl}api/hotels/countByCity?cities=london,gramado,porto`);
 
   return (
     <div className="featured">
