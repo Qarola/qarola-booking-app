@@ -47,17 +47,17 @@ exports.getUsers = async (req,res,next)=>{
 // Obtener información del usuario actualmente autenticado
 exports.getAuthenticatedUser = async (req, res) => {
   try {
-    const userId = req.userId; // Asumiendo que tienes un middleware que agrega el ID del usuario al objeto de solicitud (req.userId) después de verificar el token.
+    const userId = req.userId;
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado." });
+      return res.status(404).json({ message: "User not found." });
     }
 
-    // Devolver solo la información necesaria, como el nombre de usuario
+    // Devuelve solo la información necesaria, como el nombre de usuario
     res.json({ username: user.username });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Error en el servidor." });
+    res.status(500).json({ message: "Server error." });
   }
 };
 
@@ -66,7 +66,7 @@ exports.getUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado." });
+      return res.status(404).json({ message: "User not found." });
     }
 
     // Devolver solo la información necesaria, como el nombre de usuario
@@ -76,4 +76,3 @@ exports.getUser = async (req, res, next) => {
   }
 };
 
-// ... otras funciones de controlador ...
