@@ -54,6 +54,7 @@
   position: relative; /* Asegura que el menú desplegable esté posicionado correctamente */
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 /* navbar.css */

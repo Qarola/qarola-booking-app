@@ -6,14 +6,24 @@ import { signOut } from 'firebase/auth';
 import "./navbar.css";
 
 const Navbar = () => {
-  const { user, isLogged, dispatch } = useContext(AuthContext);
+  const { user, isLogged, dispatch, setIsLogged } = useContext(AuthContext);
   console.log("isLogged:", isLogged);
   const [showDropdown, setShowDropdown] = useState(false);
   
+  
+   const handleUserClick = () => {
+    setShowDropdown(!showDropdown);
+   }
+
+
   const handleSignOut = async () => {
     try {
       console.log('Cierre de sesión en progreso...');
+      setIsLogged(false); // Utiliza setIsLogged para cambiar el estado isLogged
       await signOut();
+      console.log('Cierre de sesión exitoso');
+      await signOut();
+      
       console.log('Cierre de sesión exitoso');
       dispatch({ type: 'LOGOUT' });
     } catch (error) {
@@ -23,19 +33,17 @@ const Navbar = () => {
 
   // Maneja el clic fuera del menú desplegable para cerrarlo
   useEffect(() => {
-    const handleOutsideClick = () => {
-      if (showDropdown) {
+    const handleOutsideClick = (event) => {
+      if (showDropdown && !event.target.closest(".userProfile")) {
         setShowDropdown(false);
       }
     };
 
     if (showDropdown) {
       console.log('Abriendo menú desplegable...');
-
       window.addEventListener('click', handleOutsideClick);
     } else {
       console.log('Cerrando menú desplegable...');
-
       window.removeEventListener('click', handleOutsideClick);
     }
 
@@ -55,7 +63,7 @@ const Navbar = () => {
         </Link>
         <div className="navItems">
           {isLogged ? (
-            <div className="userProfile">
+            <div className="userProfile" onClick={handleUserClick}>
               <div className="userDetails">
           {user.photoURL && ( <img src={user.photoURL} alt="User Avatar" className="user-avatar" />
           )}

@@ -38,6 +38,11 @@ const AuthReducer = (state, action) => {
         loading: false,
         error: null,
       };
+      case "SET_IS_LOGGED":
+      return {
+       ...state,
+       isLogged: action.payload,
+      };
     default:
       return state;
   }
@@ -48,13 +53,17 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
+   const setIsLogged = (value) => {
+    dispatch({ type: 'SET_IS_LOGGED', payload: value });
+   };
+  
   useEffect(() => {
     // Actualiza el valor de isLogged en localStorage
     localStorage.setItem("isLogged", state.isLogged);
   }, [state.isLogged]);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch, setIsLogged }}>
       {children}
     </AuthContext.Provider>
   );
