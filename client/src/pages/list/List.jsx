@@ -1,4 +1,3 @@
-import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
@@ -7,6 +6,8 @@ import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import "./list.css";
+
 
 const List = () => {
   const location = useLocation();
@@ -20,14 +21,20 @@ const List = () => {
   const [max, setMax] = useState(undefined);
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const { data, loading, error, reFetch } = useFetch(
-    `${backendUrl}/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `${backendUrl}api/hotels?city=${destination}&min=${min || 0}&max=${
+      max || 999
+    }`
   );
 
   const handleClick = () => {
     reFetch();
   };
+
+  console.log("dates:", dates);
+  console.log("data:", data);
+  console.log("options:", options);
 
   return (
     <div>

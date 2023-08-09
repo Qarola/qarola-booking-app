@@ -19,7 +19,6 @@ import Reserve from "../../components/reserve/Reserve";
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -27,25 +26,26 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-
-// eslint-disable-next-line
-const { data, loading, error } = useFetch(`${backendUrl}/hotels/find/${id}`);
-const { user } = useContext(AuthContext);
+  // eslint-disable-next-line
+  const { data, loading, error } = useFetch(
+    `${backendUrl}api/hotels/find/${id}`
+  );
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
-
-
   function dayDifference(date1, date2) {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  //const days = dayDifference(dates[0]?.endDate, dates[0]?.startDate);
+  const days =
+    dates && dates[0] ? dayDifference(dates[0].endDate, dates[0].startDate) : 0;
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -71,6 +71,10 @@ const { user } = useContext(AuthContext);
       navigate("/register");
     }
   };
+
+  console.log("dates:", dates);
+  console.log("data:", data);
+  console.log("options:", options);
   return (
     <div>
       <Navbar />
@@ -106,14 +110,13 @@ const { user } = useContext(AuthContext);
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – {data.distance}m from center
+              Excellent location – {data.distance} km from center
             </span>
             <span className="hotelPriceHighlight">
               Book a stay over ${data.cheapestPrice} at this property and get a
@@ -146,7 +149,7 @@ const { user } = useContext(AuthContext);
                   <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
                 </h2>
-                <button onClick={handleClick}>Reserve or Book Now!</button>
+                <button onClick={handleClick}>I'll reserve!</button>
               </div>
             </div>
           </div>
@@ -154,7 +157,7 @@ const { user } = useContext(AuthContext);
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
