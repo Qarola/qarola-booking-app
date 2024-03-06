@@ -6,7 +6,6 @@
 ##
 
 ## This app is over construction.
-## This app is over construction.
 
 ##
 
